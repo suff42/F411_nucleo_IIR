@@ -296,11 +296,12 @@ static void MX_GPIO_Init(void)
 
 
 void HAL_I2SEx_TxRxHalfCpltCallback(I2S_HandleTypeDef *hi2s){
+	callback_state = 1;
 
 }
 
 void HAL_I2SEx_TxRxCpltCallback(I2S_HandleTypeDef *hi2s){
-
+	callback_state = 2;
 }
 
 /* USER CODE END 4 */
