@@ -59,7 +59,7 @@ uint16_t txBuf[BLOCK_SIZE_U16 * 2];
 float l_buf_in[BLOCK_SIZE_FLOAT * 2];
 float r_buf_in[BLOCK_SIZE_FLOAT * 2];
 float l_buf_out[BLOCK_SIZE_FLOAT * 2];
-float l_buf_out[BLOCK_SIZE_FLOAT * 2];
+float r_buf_out[BLOCK_SIZE_FLOAT * 2];
 
 uint8_t callback_state = 0;
 
@@ -126,9 +126,54 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+	while (1) {
+		if (callback_state != 0) {
+
+			//decide if it was half or cplt callback
+			if (callback_state == 1) {
+				offset_r_ptr = 0;
+				offset_w_ptr = 0;
+				w_ptr = 0;
+			}
+
+			else if (callback_state == 2) {
+				offset_r_ptr = BLOCK_SIZE_U16;
+				offset_w_ptr = BLOCK_SIZE_FLOAT;
+				w_ptr = BLOCK_SIZE_FLOAT;
+			}
+
+			//restore input sample buffer to float array
+			for (int i = offset_r_ptr; i < offset_r_ptr + BLOCK_SIZE_U16;
+					i = i + 4) {
+				l_buf_in[w_ptr] =
+						(float) ((int) (rxBuf[i] << 16) | rxBuf[i + 1]);
+				r_buf_in[w_ptr] = (float) ((int) (rxBuf[i + 2] << 16)
+						| rxBuf[i + 3]);
+				w_ptr++;
+			}
+
+			//process IIR
+			arm_biquad_cascade_df1_f32(&iir_settings_l, &l_buf_in[offset_w_ptr],
+					&l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+			arm_biquad_cascade_df1_f32(&iir_settings_r, &r_buf_in[offset_w_ptr],
+					&r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+
+			//restore processed float-array to output sample-buffer
+			w_ptr = offset_w_ptr;
+
+			for (int i = offset_r_ptr; i < offset_r_ptr + BLOCK_SIZE_U16;
+					i = i + 4) {
+				txBuf[i] = (((int) l_buf_out[w_ptr]) >> 16) & 0xFFFF;
+				txBuf[i + 1] = ((int) l_buf_out[w_ptr]) & 0xFFFF;
+				txBuf[i + 2] = (((int) r_buf_out[w_ptr]) >> 16) & 0xFFFF;
+				txBuf[i + 3] = ((int) r_buf_out[w_ptr]) & 0xFFFF;
+				w_ptr++;
+			}
+
+			callback_state = 0;
+
+		}
+		/* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
