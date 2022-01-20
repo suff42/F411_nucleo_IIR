@@ -21,29 +21,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   8 .data         0000000c  20000000  08003410  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000258  2000000c  0800341c  0002000c  2**2
+  9 .bss          00000190  2000000c  0800341c  0002000c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  20000264  0800341c  00020264  2**0
+ 10 ._user_heap_stack 00000604  2000019c  0800341c  0002019c  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00008448  00000000  00000000  0002003c  2**0
+ 12 .debug_info   00008419  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000019cb  00000000  00000000  00028484  2**0
+ 13 .debug_abbrev 000019cb  00000000  00000000  00028455  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000006b0  00000000  00000000  00029e50  2**3
+ 14 .debug_aranges 000006b0  00000000  00000000  00029e20  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000005e8  00000000  00000000  0002a500  2**3
+ 15 .debug_ranges 000005e8  00000000  00000000  0002a4d0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001580c  00000000  00000000  0002aae8  2**0
+ 16 .debug_macro  0001580c  00000000  00000000  0002aab8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00008f2d  00000000  00000000  000402f4  2**0
+ 17 .debug_line   00008f2d  00000000  00000000  000402c4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0008536b  00000000  00000000  00049221  2**0
+ 18 .debug_str    00085357  00000000  00000000  000491f1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000ce58c  2**0
+ 19 .comment      00000053  00000000  00000000  000ce548  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000197c  00000000  00000000  000ce5e0  2**2
+ 20 .debug_frame  0000197c  00000000  00000000  000ce59c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -396,45 +396,45 @@ int main(void)
 
 
   //left-channel, High-Pass, 1kHz, fs=96kHz, q=0.7
-  l_a0 = 0.9890089482943171f;
+  l_a0 = 0.9918128207744845f;
  80004f4:	4b12      	ldr	r3, [pc, #72]	; (8000540 <main+0x70>)
  80004f6:	4a13      	ldr	r2, [pc, #76]	; (8000544 <main+0x74>)
  80004f8:	601a      	str	r2, [r3, #0]
-  l_a1 = -1.9780178965886341f;
+  l_a1 = -1.983625641548969f;
  80004fa:	4b13      	ldr	r3, [pc, #76]	; (8000548 <main+0x78>)
  80004fc:	4a13      	ldr	r2, [pc, #76]	; (800054c <main+0x7c>)
  80004fe:	601a      	str	r2, [r3, #0]
-  l_a2 = 0.9890089482943171f;
+  l_a2 = 0.9918128207744845f;
  8000500:	4b13      	ldr	r3, [pc, #76]	; (8000550 <main+0x80>)
  8000502:	4a10      	ldr	r2, [pc, #64]	; (8000544 <main+0x74>)
  8000504:	601a      	str	r2, [r3, #0]
-  l_b1 = -1.977758382124402f;
+  l_b1 = -1.9833653913528049f;
  8000506:	4b13      	ldr	r3, [pc, #76]	; (8000554 <main+0x84>)
  8000508:	4a13      	ldr	r2, [pc, #76]	; (8000558 <main+0x88>)
  800050a:	601a      	str	r2, [r3, #0]
-  l_b2 = 0.9782774110528661f;
+  l_b2 = 0.9838858917451334f;
  800050c:	4b13      	ldr	r3, [pc, #76]	; (800055c <main+0x8c>)
  800050e:	4a14      	ldr	r2, [pc, #80]	; (8000560 <main+0x90>)
  8000510:	601a      	str	r2, [r3, #0]
 
-  //right-channel, Low-Pass, 1kHz, fs)96 kHz, q=0.7
-  r_a0 = 0.0001297572321160003f;
+  //right-channel, Low-Pass, 350Hz, fs=96 kHz, q=1.41
+  r_a0 = 0.00013012509808208708f;
  8000512:	4b14      	ldr	r3, [pc, #80]	; (8000564 <main+0x94>)
  8000514:	4a14      	ldr	r2, [pc, #80]	; (8000568 <main+0x98>)
  8000516:	601a      	str	r2, [r3, #0]
-  r_a1 = 0.0002595144642320006f;
+  r_a1 = 0.00026025019616417416f;
  8000518:	4b14      	ldr	r3, [pc, #80]	; (800056c <main+0x9c>)
  800051a:	4a15      	ldr	r2, [pc, #84]	; (8000570 <main+0xa0>)
  800051c:	601a      	str	r2, [r3, #0]
-  r_a2 = 0.0001297572321160003f;
+  r_a2 = 0.00013012509808208708f;
  800051e:	4b15      	ldr	r3, [pc, #84]	; (8000574 <main+0xa4>)
  8000520:	4a11      	ldr	r2, [pc, #68]	; (8000568 <main+0x98>)
  8000522:	601a      	str	r2, [r3, #0]
-  r_b1 = -1.977758382124402f;
+  r_b1 = -1.9833653913528049f;
  8000524:	4b14      	ldr	r3, [pc, #80]	; (8000578 <main+0xa8>)
  8000526:	4a0c      	ldr	r2, [pc, #48]	; (8000558 <main+0x88>)
  8000528:	601a      	str	r2, [r3, #0]
-  r_b2 = 0.9782774110528661f;
+  r_b2 = 0.9838858917451334f;
  800052a:	4b14      	ldr	r3, [pc, #80]	; (800057c <main+0xac>)
  800052c:	4a0c      	ldr	r2, [pc, #48]	; (8000560 <main+0x90>)
  800052e:	601a      	str	r2, [r3, #0]
@@ -448,23 +448,23 @@ int main(void)
  8000532:	bf00      	nop
  8000534:	20000058 	.word	0x20000058
  8000538:	2000003c 	.word	0x2000003c
- 800053c:	20000218 	.word	0x20000218
+ 800053c:	20000150 	.word	0x20000150
  8000540:	20000030 	.word	0x20000030
- 8000544:	3f7d2fb1 	.word	0x3f7d2fb1
+ 8000544:	3f7de772 	.word	0x3f7de772
  8000548:	2000007c 	.word	0x2000007c
- 800054c:	bffd2fb1 	.word	0xbffd2fb1
+ 800054c:	bffde772 	.word	0xbffde772
  8000550:	2000004c 	.word	0x2000004c
  8000554:	2000006c 	.word	0x2000006c
- 8000558:	bffd2730 	.word	0xbffd2730
+ 8000558:	bffddeeb 	.word	0xbffddeeb
  800055c:	2000002c 	.word	0x2000002c
- 8000560:	3f7a7063 	.word	0x3f7a7063
+ 8000560:	3f7bdff2 	.word	0x3f7bdff2
  8000564:	20000038 	.word	0x20000038
- 8000568:	39080f71 	.word	0x39080f71
+ 8000568:	39087231 	.word	0x39087231
  800056c:	20000068 	.word	0x20000068
- 8000570:	39880f71 	.word	0x39880f71
- 8000574:	20000214 	.word	0x20000214
+ 8000570:	39887231 	.word	0x39887231
+ 8000574:	2000014c 	.word	0x2000014c
  8000578:	20000034 	.word	0x20000034
- 800057c:	20000150 	.word	0x20000150
+ 800057c:	20000088 	.word	0x20000088
 
 08000580 <SystemClock_Config>:
 /**
@@ -664,7 +664,7 @@ static void MX_I2S2_Init(void)
  800069e:	bf00      	nop
  80006a0:	bd80      	pop	{r7, pc}
  80006a2:	bf00      	nop
- 80006a4:	20000218 	.word	0x20000218
+ 80006a4:	20000150 	.word	0x20000150
  80006a8:	40003800 	.word	0x40003800
  80006ac:	00017700 	.word	0x00017700
 
@@ -966,11 +966,11 @@ int Calc_IIR_Right (int inSample) {
  8000904:	20000038 	.word	0x20000038
  8000908:	20000068 	.word	0x20000068
  800090c:	20000070 	.word	0x20000070
- 8000910:	20000214 	.word	0x20000214
+ 8000910:	2000014c 	.word	0x2000014c
  8000914:	20000084 	.word	0x20000084
  8000918:	20000034 	.word	0x20000034
  800091c:	20000050 	.word	0x20000050
- 8000920:	20000150 	.word	0x20000150
+ 8000920:	20000088 	.word	0x20000088
  8000924:	20000078 	.word	0x20000078
 
 08000928 <HAL_I2SEx_TxRxHalfCpltCallback>:
@@ -1570,9 +1570,9 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
  8000ca4:	40020800 	.word	0x40020800
  8000ca8:	40020000 	.word	0x40020000
  8000cac:	40020400 	.word	0x40020400
- 8000cb0:	20000154 	.word	0x20000154
+ 8000cb0:	2000008c 	.word	0x2000008c
  8000cb4:	40026058 	.word	0x40026058
- 8000cb8:	200001b4 	.word	0x200001b4
+ 8000cb8:	200000ec 	.word	0x200000ec
  8000cbc:	40026070 	.word	0x40026070
 
 08000cc0 <NMI_Handler>:
@@ -1754,7 +1754,7 @@ void DMA1_Stream3_IRQHandler(void)
  8000d1e:	bf00      	nop
  8000d20:	bd80      	pop	{r7, pc}
  8000d22:	bf00      	nop
- 8000d24:	20000154 	.word	0x20000154
+ 8000d24:	2000008c 	.word	0x2000008c
 
 08000d28 <DMA1_Stream4_IRQHandler>:
 
@@ -1778,7 +1778,7 @@ void DMA1_Stream4_IRQHandler(void)
  8000d32:	bf00      	nop
  8000d34:	bd80      	pop	{r7, pc}
  8000d36:	bf00      	nop
- 8000d38:	200001b4 	.word	0x200001b4
+ 8000d38:	200000ec 	.word	0x200000ec
 
 08000d3c <SystemInit>:
   *         configuration.
@@ -1899,7 +1899,7 @@ LoopFillZerobss:
   ldr r2, =_sbss
  8000da8:	2000000c 	.word	0x2000000c
   ldr r4, =_ebss
- 8000dac:	20000264 	.word	0x20000264
+ 8000dac:	2000019c 	.word	0x2000019c
 
 08000db0 <ADC_IRQHandler>:
  * @retval None       
@@ -2062,7 +2062,7 @@ __weak void HAL_IncTick(void)
  8000e74:	4770      	bx	lr
  8000e76:	bf00      	nop
  8000e78:	20000008 	.word	0x20000008
- 8000e7c:	20000260 	.word	0x20000260
+ 8000e7c:	20000198 	.word	0x20000198
 
 08000e80 <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -2082,7 +2082,7 @@ __weak uint32_t HAL_GetTick(void)
  8000e8c:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000e90:	4770      	bx	lr
  8000e92:	bf00      	nop
- 8000e94:	20000260 	.word	0x20000260
+ 8000e94:	20000198 	.word	0x20000198
 
 08000e98 <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available

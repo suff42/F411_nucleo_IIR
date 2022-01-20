@@ -60,8 +60,8 @@ all: main-build
 main-build: F411_nucleo_IIR.elf secondary-outputs
 
 # Tool invocations
-F411_nucleo_IIR.elf: $(OBJS) $(USER_OBJS) C:\code\stm32\lauda\F411_nucleo_IIR\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "F411_nucleo_IIR.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\code\stm32\lauda\F411_nucleo_IIR\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F411_nucleo_IIR.map" -Wl,--gc-sections -static -L../Drivers/CMSIS/Lib/GCC --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+F411_nucleo_IIR.elf: $(OBJS) $(USER_OBJS) D:\Projekty\stm32\cubeIDE\F411_nucleo_IIR\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "F411_nucleo_IIR.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Projekty\stm32\cubeIDE\F411_nucleo_IIR\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F411_nucleo_IIR.map" -Wl,--gc-sections -static -L../Drivers/CMSIS/Lib/GCC --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
