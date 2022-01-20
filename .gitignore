@@ -43,3 +43,9 @@
 
 # Libraries
 /lib
+Debug/Core/Src/main.o
+Debug/Core/Src/main.su
+Debug/F411_nucleo_IIR.bin
+Debug/F411_nucleo_IIR.elf
+Debug/F411_nucleo_IIR.list
+Debug/F411_nucleo_IIR.map
