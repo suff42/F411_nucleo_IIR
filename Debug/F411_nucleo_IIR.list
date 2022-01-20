@@ -35,15 +35,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_ranges 000005e8  00000000  00000000  0002a4d0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001580c  00000000  00000000  0002aab8  2**0
+ 16 .debug_macro  00015818  00000000  00000000  0002aab8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00008f2d  00000000  00000000  000402c4  2**0
+ 17 .debug_line   00008f2d  00000000  00000000  000402d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00085357  00000000  00000000  000491f1  2**0
+ 18 .debug_str    00085380  00000000  00000000  000491fd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000ce548  2**0
+ 19 .comment      00000053  00000000  00000000  000ce57d  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000197c  00000000  00000000  000ce59c  2**2
+ 20 .debug_frame  0000197c  00000000  00000000  000ce5d0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -395,7 +395,7 @@ int main(void)
  80004f0:	f001 fd1e 	bl	8001f30 <HAL_I2SEx_TransmitReceive_DMA>
 
 
-  //left-channel, High-Pass, 1kHz, fs=96kHz, q=0.7
+  //left-channel, High-Pass, 350Hz, fs=96kHz, q=1.41
   l_a0 = 0.9918128207744845f;
  80004f4:	4b12      	ldr	r3, [pc, #72]	; (8000540 <main+0x70>)
  80004f6:	4a13      	ldr	r2, [pc, #76]	; (8000544 <main+0x74>)

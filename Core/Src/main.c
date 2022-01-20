@@ -31,6 +31,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define BLOCK_SIZE_FLOAT 512
+#define BLOCK_SIZE_U16 2048
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,6 +46,13 @@ DMA_HandleTypeDef hdma_i2s2_ext_rx;
 DMA_HandleTypeDef hdma_spi2_tx;
 
 /* USER CODE BEGIN PV */
+
+float l_a0, l_a1, l_a2, l_b1, l_b2, lin_z1, lin_z2, lout_z1, lout_z2;
+float r_a0, r_a1, r_a2, r_b1, r_b2, rin_z1, rin_z2, rout_z1, rout_z2;
+
+uint16_t rxBuf[8];
+uint16_t txBuf[8];
+
 
 /* USER CODE END PV */
 
@@ -59,11 +68,6 @@ static void MX_I2S2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-float l_a0, l_a1, l_a2, l_b1, l_b2, lin_z1, lin_z2, lout_z1, lout_z2;
-float r_a0, r_a1, r_a2, r_b1, r_b2, rin_z1, rin_z2, rout_z1, rout_z2;
-
-uint16_t rxBuf[8];
-uint16_t txBuf[8];
 
 /* USER CODE END 0 */
 
@@ -102,7 +106,7 @@ int main(void)
   HAL_I2SEx_TransmitReceive_DMA (&hi2s2, txBuf, rxBuf, 4);
 
 
-  //left-channel, High-Pass, 1kHz, fs=96kHz, q=0.7
+  //left-channel, High-Pass, 350Hz, fs=96kHz, q=1.41
   l_a0 = 0.9918128207744845f;
   l_a1 = -1.983625641548969f;
   l_a2 = 0.9918128207744845f;
