@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "arm_math.h"
+#include "iir_coeffs.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +48,7 @@ DMA_HandleTypeDef hdma_spi2_tx;
 
 /* USER CODE BEGIN PV */
 
-arm_biquad_casd_df1_inst_f32 iir_settings_l, iir_setting_r;
+arm_biquad_casd_df1_inst_f32 iir_settings_l, iir_settings_r;
 
 // 4 delayed samples per biquad
 float iir_l_state[4];
@@ -61,6 +62,9 @@ float l_buf_out[BLOCK_SIZE_FLOAT * 2];
 float l_buf_out[BLOCK_SIZE_FLOAT * 2];
 
 uint8_t callback_state = 0;
+
+int offset_r_ptr, offset_w_ptr;
+int w_ptr;
 
 /* USER CODE END PV */
 
@@ -111,7 +115,12 @@ int main(void)
   MX_I2S2_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_I2SEx_TransmitReceive_DMA (&hi2s2, txBuf, rxBuf, 4);
+  // init IIR structure
+  arm_biquad_cascade_df1_init_f32(&iir_settings_l, 1, &biquad_hp_350_05[0], &iir_l_state[0]);
+  arm_biquad_cascade_df1_init_f32(&iir_settings_r, 1, &biquad_lp_350_05[0], &iir_r_state[0]);
+
+  // start i2s with 2048 samples transmission => 4096*u16 words
+  HAL_I2SEx_TransmitReceive_DMA(&hi2s2, txBuf, rxBuf, BLOCK_SIZE_U16);
 
   /* USER CODE END 2 */
 
