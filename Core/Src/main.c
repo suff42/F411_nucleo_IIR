@@ -197,21 +197,22 @@ int main(void) {
 
 
 			/* process IIR */
-			arm_biquad_cascade_df1_f32(&EQ_1, &l_buf_in[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_2, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+			arm_biquad_cascade_df1_f32(&EQ_HP, &l_buf_in[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+			arm_biquad_cascade_df1_f32(&EQ_LP, &r_buf_in[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+
+//			arm_biquad_cascade_df1_f32(&EQ_1, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+//			arm_biquad_cascade_df1_f32(&EQ_2, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 			arm_biquad_cascade_df1_f32(&EQ_3, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 			arm_biquad_cascade_df1_f32(&EQ_4, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_5, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+//			arm_biquad_cascade_df1_f32(&EQ_5, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 
-			arm_biquad_cascade_df1_f32(&EQ_1, &r_buf_in[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+			arm_biquad_cascade_df1_f32(&EQ_1, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 			arm_biquad_cascade_df1_f32(&EQ_2, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_3, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_4, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_5, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+//			arm_biquad_cascade_df1_f32(&EQ_3, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+//			arm_biquad_cascade_df1_f32(&EQ_4, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
+//			arm_biquad_cascade_df1_f32(&EQ_5, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 
 
-			arm_biquad_cascade_df1_f32(&EQ_HP, &l_buf_out[offset_w_ptr], &l_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
-			arm_biquad_cascade_df1_f32(&EQ_LP, &r_buf_out[offset_w_ptr], &r_buf_out[offset_w_ptr], BLOCK_SIZE_FLOAT);
 
 			/* restore processed float-array to output sample-buffer */
 			w_ptr = offset_w_ptr;
